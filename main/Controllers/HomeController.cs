@@ -10,7 +10,13 @@ namespace main.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            //修正為抓取商品
+            //return View();
+            using (Models.mainEntities db =new Models.mainEntities())
+            {
+                var result = (from s in db.Products select s).ToList();
+                return View(result); 
+            }
         }
         
         public ActionResult About()

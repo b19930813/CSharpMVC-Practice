@@ -1,4 +1,4 @@
-﻿
+﻿@model List<main.Models.Product>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,15 +10,23 @@
     @Html.Label("info",(string)ViewBag.ResultMessage,new { @class = "text-info"})
 }
 <table class="table">
-    <thead><tr><td>編號</td><td>名稱</td><td>描述</td><td>售價</td><td>庫存</td></tr></thead>
+    <thead><tr><td colspan="2">操作</td><td>商品圖</td><td>編號</td><td>名稱</td><td>描述</td><td>售價</td><td>庫存</td></tr></thead>
     <tbody>
         @foreach (var pd in this.Model)
         {
             <tr>
                 <td>
                     @Html.ActionLink("編輯", "Edit", new {id = pd.Id}, new {@class = "btn btn-default"})
-                    @Html.ActionLink("刪除", "Delete", new { id = pd.Id }, new { @class = "btn btn-default" })
+                 </td>
+                <td>
+                    <!--修正刪除的語法，並且設定為Post-->
+                     @using (@Html.BeginForm("Delete","Product",FormMethod.Post,new { @class = "Delete" }))
+                     {
+                         @Html.Hidden("id",pd.Id)
+                         <input type="submit" value="刪除" class="btn btn-default"/>
+                     }
                 </td>
+                <td><img src="@pd.DefaultImageURL" width="50" height="50"/></td>
                 <td>@pd.Id</td>
                 <td>@pd.Name</td>
                 <td>@pd.Description</td>

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<main.Models.ManageUser>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>網站會員管理</h2>
+@if(ViewBag.ResultMassage != null)
+{
+    @Html.Label("info",(string)ViewBag.ResultMessage, new { @class ="text-info" })
+}
+<table class"table">
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model =>model.UserName)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.Email)
+        </td>
+        <td>操作</td>
+    </tr>
+
+    @foreach(var items in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => items.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => items.Email)
+            </td>
+            <td>
+                @Html.ActionLink("編輯","Edit",new { id = items.Id},new {@class = "btn btn-default"})
+            </td>
+        </tr>
+    }
+</table>

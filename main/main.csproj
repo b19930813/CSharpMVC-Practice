@@ -170,14 +170,35 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ManageUserController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RouteTestController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AspNetRoles.cs">
+      <DependentUpon>UserModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaims.cs">
+      <DependentUpon>UserModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogins.cs">
+      <DependentUpon>UserModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUsers.cs">
+      <DependentUpon>UserModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cart\Cart.cs" />
+    <Compile Include="Models\Cart\CartItem.cs" />
+    <Compile Include="Models\Cart\Operation.cs" />
+    <Compile Include="Models\C__MigrationHistory.cs">
+      <DependentUpon>UserModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\main.Context.cs">
       <AutoGen>True</AutoGen>
@@ -194,11 +215,27 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>main.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ManageUser.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Product.cs">
       <DependentUpon>main.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RouteTest\TempProducts.cs" />
+    <Compile Include="Models\UserModels.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserModels.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserModels.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserModels.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserModels.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -220,6 +257,16 @@
       <DependentUpon>main.edmx</DependentUpon>
       <LastGenOutput>main.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\UserModels.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UserModels.edmx</DependentUpon>
+      <LastGenOutput>UserModels.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\UserModels.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UserModels.edmx</DependentUpon>
+      <LastGenOutput>UserModels.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\main.edmx">
@@ -228,6 +275,13 @@
     </EntityDeploy>
     <Content Include="Models\main.edmx.diagram">
       <DependentUpon>main.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\UserModels.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UserModels.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\UserModels.edmx.diagram">
+      <DependentUpon>UserModels.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -279,10 +333,17 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\Create.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\ManageUser\Edit.cshtml" />
+    <Content Include="Views\ManageUser\Index.cshtml" />
+    <Content Include="Views\Shared\_CartPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\CartItem\" />
+    <Folder Include="Views\Cart\" />
+    <Folder Include="Views\Operation\" />
     <Folder Include="Views\TempProducts\" />
+    <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

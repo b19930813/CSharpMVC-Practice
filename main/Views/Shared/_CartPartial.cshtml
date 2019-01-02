@@ -1,0 +1,16 @@
+﻿@{ 
+    var currentCart = main.Models.Cart.Operation.GetCurrentCart();
+}
+
+<a id="CartDropDown" class="dropdown-toggle" data-toggle="dropdown">
+    共500元 (3)
+    <span class="caret"></span>
+</a>
+
+<ul class="dropdown-menu" role="menu" aria-labelledby="CartDropDown">
+  <li><a>Test1 <span>100 元 X 1 </span></a></li>
+    <li><a>Test2 <span>200 元 X 1 </span></a></li>
+    <li><a>Test3 <span>300 元 X 1 </span></a></li>
+    <ii class="divider"></ii>
+    <li><a class="btn btn-default text-center" href="#">結帳去</a></li>
+</ul>

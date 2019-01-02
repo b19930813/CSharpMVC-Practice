@@ -8,13 +8,14 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" />
-    <Property Name="Description" Type="String" Nullable="false" MaxLength="100" />
-    <Property Name="CategoryId" Type="String" Nullable="false" MaxLength="100" />
-    <Property Name="Price" Type="String" Nullable="false" MaxLength="100" />
-    <Property Name="PublishDate" Type="String" Nullable="false" />
-    <Property Name="Status" Type="String" Nullable="false" MaxLength="100" />
-    <Property Name="DefaultImageId" Type="String" Nullable="false" MaxLength="100" />
-    <Property Name="Quantity" Type="String" Nullable="false" MaxLength="100" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" />
+    <Property Name="PublishDate" Type="DateTime" Nullable="false" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="DefaultImageId" Type="Int64" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="DefaultImageURL" Type="String" Nullable="false" MaxLength="100" />
   </EntityType>
 </Schema>

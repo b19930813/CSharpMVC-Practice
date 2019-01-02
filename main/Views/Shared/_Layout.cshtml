@@ -25,6 +25,11 @@
                     <li>@Html.ActionLink("首頁", "Index", "Home")</li>
                     <li>@Html.ActionLink("關於", "About", "Home")</li>
                     <li>@Html.ActionLink("連絡方式", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("商品管理", "Index", "Product")</li>
+                    <li>@Html.ActionLink("會員管理", "Index", "ManageUser")</li>
+                    <li id="Cart">
+                        @Html.Partial("_CartPartial")
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -34,7 +39,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - 我的 ASP.NET 應用程式</p>
+            <p>&copy; @DateTime.Now.Year - 小田卷神奇寶貝亂買網</p>
         </footer>
     </div>
 

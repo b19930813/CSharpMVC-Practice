@@ -13,6 +13,7 @@
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="DefaultImageId" ColumnName="DefaultImageId" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="DefaultImageURL" ColumnName="DefaultImageURL" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

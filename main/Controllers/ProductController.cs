@@ -77,6 +77,7 @@ namespace main.Controllers
                 {
                     var result = (from s in db.Products where s.Id == postback.Id select s).FirstOrDefault();
                     //Revise Data
+                 
                     result.Name = postback.Name;
                     result.Price = postback.Price;
                     result.PublishDate = postback.PublishDate;
@@ -85,6 +86,7 @@ namespace main.Controllers
                     result.CategoryId = postback.CategoryId;
                     result.DefaultImageId = postback.DefaultImageId;
                     result.Description = postback.Description;
+                    result.DefaultImageURL = postback.DefaultImageURL;
 
                     //save data which changed
                     db.SaveChanges();
@@ -97,6 +99,26 @@ namespace main.Controllers
             else
             {
                 return View(postback);
+            }
+        }
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            using (Models.mainEntities db =new Models.mainEntities())
+            {
+                var result = (from s in db.Products where s.Id == id select s).FirstOrDefault();
+                if(result != default(Models.Product))
+                {
+                    db.Products.Remove(result);
+                    db.SaveChanges();
+                    TempData["resultMessage"] = String.Format("商品[{0}]已刪除", result.Name);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    TempData["resultMessage"] = String.Format("沒有找到指定商品，無法刪除");
+                    return RedirectToAction("Index");
+                }
             }
         }
     }

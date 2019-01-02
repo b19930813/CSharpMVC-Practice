@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/24/2018 11:23:30
+-- Date Created: 01/02/2019 11:10:49
 -- Generated from EDMX file: D:\Frank\program\Shopping Web\main\main\Models\main.edmx
 -- --------------------------------------------------
 
@@ -32,12 +32,13 @@ CREATE TABLE [dbo].[Products] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(100)  NOT NULL,
     [Description] nvarchar(100)  NOT NULL,
-    [CategoryId] nvarchar(100)  NOT NULL,
-    [Price] nvarchar(100)  NOT NULL,
-    [PublishDate] nvarchar(max)  NOT NULL,
-    [Status] nvarchar(100)  NOT NULL,
-    [DefaultImageId] nvarchar(100)  NOT NULL,
-    [Quantity] nvarchar(100)  NOT NULL
+    [CategoryId] int  NOT NULL,
+    [Price] decimal(18,0)  NOT NULL,
+    [PublishDate] datetime  NOT NULL,
+    [Status] bit  NOT NULL,
+    [DefaultImageId] bigint  NOT NULL,
+    [Quantity] int  NOT NULL,
+    [DefaultImageURL] nvarchar(100)  NOT NULL
 );
 GO
 

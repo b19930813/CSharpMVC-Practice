@@ -11,27 +11,18 @@ namespace main.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    //模型驗證，設定每一個屬性皆為必要
+    
     public partial class Product
     {
-        [Required]
         public int Id { get; set; }
-        [Required]
         public string Name { get; set; }
-        [Required]
         public string Description { get; set; }
-        [Required]
-        public string CategoryId { get; set; }
-        [Required]
-        public string Price { get; set; }
-        [Required]
-        public string PublishDate { get; set; }
-        [Required]
-        public string Status { get; set; }
-        [Required]
-        public string DefaultImageId { get; set; }
-        [Required]
-        public string Quantity { get; set; }
+        public int CategoryId { get; set; }
+        public decimal Price { get; set; }
+        public System.DateTime PublishDate { get; set; }
+        public bool Status { get; set; }
+        public long DefaultImageId { get; set; }
+        public int Quantity { get; set; }
+        public string DefaultImageURL { get; set; }
     }
 }
