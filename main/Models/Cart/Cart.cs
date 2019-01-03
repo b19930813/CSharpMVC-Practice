@@ -83,16 +83,19 @@ namespace main.Models.Cart
             this.cartItems.Add(cartItem);
             return true;
         }
+        #region IEnumerator
 
-        public IEnumerator<CartItem> GetEnumerator()
+        IEnumerator<CartItem> IEnumerable<CartItem>.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return this.cartItems.GetEnumerator();
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return this.cartItems.GetEnumerator();
         }
+
+        #endregion
     }
-    
+
 }

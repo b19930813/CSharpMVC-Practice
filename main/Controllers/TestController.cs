@@ -9,7 +9,7 @@ namespace main.Controllers
     public class TestController : Controller
     {
         // GET: Test
-        /*
+        
         public ActionResult GetCart()
         {
             //Get Current Cart
@@ -17,6 +17,6 @@ namespace main.Controllers
             cart.AddProduct(1);
             return Content(String.Format("目前購物車總價為:{0}元",cart.TotalAmount));
         }
-        */
+        
     }
 }

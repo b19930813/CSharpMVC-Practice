@@ -22,8 +22,8 @@ namespace main.Controllers
 
         public ActionResult AddToCart(int id)
         {
-           // var currentCart = Models.Cart.Operation.GetCurrentCart();
-         //   currentCart.AddProduct(id);
+            var currentCart = Models.Cart.Operation.GetCurrentCart();
+            currentCart.AddProduct(id);
             return PartialView("_CartPartial");
         }
     }
