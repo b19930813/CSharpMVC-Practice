@@ -49,5 +49,29 @@ namespace main.Controllers
             }
             return View();
         }
+        public ActionResult MyOrder()
+        {
+            var userId = HttpContext.User.Identity.GetUserId();
+            using (Models.mainEntities db = new Models.mainEntities())
+            {
+                var result = (from s in db.OrderSet where s.UserId == userId select s).ToList();
+                return View(result);
+            }
+        }
+        public ActionResult MyOrderDetail(int Id)
+        {
+            using (Models.mainEntities db = new Models.mainEntities())
+            {
+                var result = (from s in db.OrderDetailSet where s.OrderId == Id select s).ToList();
+                if (result.Count == 0)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View(result);
+                }
+            }
+        }
     }
 }
