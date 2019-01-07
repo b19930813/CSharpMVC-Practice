@@ -26,5 +26,19 @@ namespace main.Controllers
             currentCart.AddProduct(id);
             return PartialView("_CartPartial");
         }
+        //call models method
+        public ActionResult RemoveFromCart(int ProductId)
+        {
+            var currentCart = Models.Cart.Operation.GetCurrentCart();
+            currentCart.RemoveProduct(ProductId);
+            return PartialView("_CartPartial");
+        }
+
+        public ActionResult ClearCart()
+        {
+            var currentCart = Models.Cart.Operation.GetCurrentCart();
+            currentCart.ClearCart();
+            return PartialView("_CartPartial");
+        }
     }
 }

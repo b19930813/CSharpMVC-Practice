@@ -1,14 +1,18 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿@using Microsoft.AspNet.Identity
+@model List<main.Models.Product>
 
+<style>
+    .ProductImg{
+        height:300px;
+    }
+</style>
 <div class="jumbotron">
     <h1>小田卷Banner</h1>
     <p class="lead">非法販賣神奇寶貝</p>
     <p><a href="" class="btn btn-primary btn-lg">購買條款 &raquo;</a></p>
 </div>
 
-<div class=="row">
+<div class="row">
     @foreach (var product in this.Model)
     {
         <div class="col-sm-1 col-md-4">
@@ -21,8 +25,13 @@
                     <p>庫存: @product.Quantity</p>
 
                     <p>
+                        <!--
                         <a href="#" class="btn btn-primary" role="button">加入購物車</a>
                         <a href="#" class="btn btn-default" role="button">詳細資訊</a>
+                        -->
+                        <a onclick="AddToCart('@product.Id')"href="javascrip:void(0);" 
+                           class="btn btn-primary" role="button">加入購物車</a>
+                        <a href="javascrip:void(0);" class="btn btn-default" role="button">詳細資訊</a>
                     </p>
                 </div>
             </div>

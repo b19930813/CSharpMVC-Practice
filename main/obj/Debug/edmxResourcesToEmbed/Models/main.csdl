@@ -2,6 +2,12 @@
 <Schema Namespace="mainModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="mainEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Products" EntityType="mainModel.Product" />
+    <EntitySet Name="OrderSet" EntityType="mainModel.Order" />
+    <EntitySet Name="OrderDetailSet" EntityType="mainModel.OrderDetail" />
+    <AssociationSet Name="OrderOrderDetail" Association="mainModel.OrderOrderDetail">
+      <End Role="Order" EntitySet="OrderSet" />
+      <End Role="OrderDetail" EntitySet="OrderDetailSet" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Product">
     <Key>
@@ -18,4 +24,38 @@
     <Property Name="Quantity" Type="Int32" Nullable="false" />
     <Property Name="DefaultImageURL" Type="String" Nullable="false" MaxLength="100" />
   </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="OrderDetail" Relationship="mainModel.OrderOrderDetail" FromRole="Order" ToRole="OrderDetail" />
+    <Property Name="UserId" Type="String" Nullable="false" />
+    <Property Name="RecieverName" Type="String" Nullable="false" />
+    <Property Name="RecieverPhone" Type="String" Nullable="false" />
+    <Property Name="RecieverAddress" Type="String" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Order" Relationship="mainModel.OrderOrderDetail" FromRole="OrderDetail" ToRole="Order" />
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" a:SetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  </EntityType>
+  <Association Name="OrderOrderDetail">
+    <End Type="mainModel.Order" Role="Order" Multiplicity="1" />
+    <End Type="mainModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -8,10 +8,27 @@
 </a>
 
 <ul class="dropdown-menu" role="menu" aria-labelledby="CartDropDown">
-    @foreach(var cartitem in currentCart)
+    @if (currentCart.Count > 0)
     {
-        <li><a>@cartitem.name<span>@cartitem.Price 元 X @cartitem.Quantity</span></a></li>
-    }
+        foreach (var cartitem in currentCart)
+        {
+          <li class="col-xs-12">
+              <span class="col-xs-10">@cartitem.name  @cartitem.Price 元 X @cartitem.Quantity</span>
+              <span class="btn btn-danger con-xs-2" onclick="RemoveFromCart('@cartitem.Id')">
+                  X
+              </span>
+          </li>
+        }
     <ii class="divider"></ii>
-    <li><a class="btn btn-default text-center" href="#">結帳去</a></li>
+    <li>
+        <div id="CartButtons" class="col-xs-12">
+            <a class="btn btn-success text-center col-xs-5" href="@Url.Action("Index","Order",new { })">結帳去</a>
+            <a class="btn btn-danger text-center col-xs-5" onclick="ClearCart()">清空</a>
+        </div>
+    </li>
+    }
+    else
+    {
+        <li><a class="btn btn-default text-center" href="#">沒有任何商品</a></li>
+    }
 </ul>

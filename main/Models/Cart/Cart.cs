@@ -83,6 +83,52 @@ namespace main.Models.Cart
             this.cartItems.Add(cartItem);
             return true;
         }
+
+        public bool RemoveProduct(int ProductId)
+        {
+
+                var result = this.cartItems.Where(s => s.Id == ProductId).Select(s => s).FirstOrDefault();
+                if (result == default(Models.Cart.CartItem))
+                {
+                    //Cart has no goods 
+                }
+                else
+                {
+                    //Remove goods
+                    this.cartItems.Remove(result);
+                }
+                return true;
+        }
+        public bool ClearCart()
+        {
+            try
+            {
+                this.cartItems.Clear();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+        // Order Methods
+        public List<Models.OrderDetail>ToOrderDetailList(int orderId)
+        {
+            var result = new List<Models.OrderDetail>();
+            foreach(var cartItem in this.cartItems)
+            {
+                result.Add(new Models.OrderDetail(){
+                    Name = cartItem.name,
+                    Price = cartItem.Price,
+                    Quantity = cartItem.Quantity,
+                    OrderId = orderId
+                });
+            }
+            return result;
+        }
+
         #region IEnumerator
 
         IEnumerator<CartItem> IEnumerable<CartItem>.GetEnumerator()

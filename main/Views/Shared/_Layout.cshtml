@@ -7,6 +7,48 @@
     <title>@ViewBag.Title - 我的 ASP.NET 應用程式</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/booststrap")
+    @*JavaScrip 語法*@
+    <script type="text/javascript">
+        $(document).ready(function () {
+            console.log("OK");   //log 為做紀錄用
+        })
+        //Add product ID  , ajax , type , url , data 
+        function AddToCart(productId) {       //使用AJAX去新增資料
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("AddToCart","Cart")',
+                data:{id:productId}
+            })
+            .done(function(msg){
+                $('li#Cart').html(msg);
+            });
+        }
+
+        function RemoveFromCart(productId) {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("RemoveFromCart","Cart")',
+                data:{id:productId}
+            })
+            .done(function (msg) {
+                $('li#Cart').html(msg);
+            })
+        }
+
+        function ClearCart() {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("ClearCart","Cart")',
+                data:{}
+            })
+            .done(function (msg) {
+                $('li#Cart').html(msg);
+            })
+        }
+    </script>
 
 </head>
 <body>
